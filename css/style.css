@@ -1,0 +1,13 @@
+body {
+  background-color: #181a1b;
+  color: #d1cdc7;
+  margin-top: 50px;
+  text-align: center;
+}
+
+form {
+  align-items: center;
+	display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
