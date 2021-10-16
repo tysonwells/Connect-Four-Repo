@@ -25,3 +25,7 @@ section {
   margin: 0;
   font-size: 24px;
 }
+
+.btn {
+  border: 0;
+}
