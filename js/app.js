@@ -28,14 +28,22 @@ const winningArray = [
 
 /*-------------------------------- Variables --------------------------------*/
 
-
+let turn, winner, board
 
 /*------------------------ Cached Element References ------------------------*/
 
-
+const boardSlots = document.querySelectorAll(".board")
+const messageDisplay = document.querySelector("#message")
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 
 
 /*-------------------------------- Functions --------------------------------*/
+init()
+
+
+function init() {
+  winner = null
+  turn = null
+}

@@ -1,13 +1,27 @@
+html {
+  box-sizing: border-box
+}
+
+/* The Universal Selector */
+*, /* All elements*/
+*::before, /* All ::before pseudo-elements */
+*::after { /* All ::after pseudo-elements */
+  /* height & width will now include border & padding by default
+     but can be over-ridden as needed */
+  box-sizing: inherit;
+}
+
 body {
-  background-color: #181a1b;
+  background-color: gray;
+  font-family: sans-serif;
+  margin: 0;
   color: #d1cdc7;
   margin-top: 50px;
   text-align: center;
 }
 
-form {
-  align-items: center;
-	display: flex;
-  justify-content: center;
-  margin-top: 24px;
+section {
+  display: grid;
+  margin: 0;
+  font-size: 24px;
 }
