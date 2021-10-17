@@ -20,12 +20,26 @@ body {
   text-align: center;
 }
 
-section {
-  display: grid;
-  margin: 0;
-  font-size: 24px;
-}
+
 
 .btn {
   border: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 110px);
+  grid-template-rows: repeat(6, 110px);
+  width: 770px;
+  height: 660px;
+  margin: 0 auto;
+  justify-content: center;
+  background-color: black;
+}
+
+.slots {
+  border: 5px solid black;
+  border-radius: 50%;
+  background-color: white;
+  outline: 5px black;
 }

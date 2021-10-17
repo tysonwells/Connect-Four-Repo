@@ -28,16 +28,18 @@ const winningArray = [
 
 /*-------------------------------- Variables --------------------------------*/
 
-let turn, winner, board
+let currentPlayer, winner, board
 
 /*------------------------ Cached Element References ------------------------*/
 
-const boardSlots = document.querySelectorAll(".board")
+const boardSlots = document.querySelectorAll(".grid")
 const messageDisplay = document.querySelector("#message")
+const playAgainButton = document.querySelector("#id")
 
 /*----------------------------- Event Listeners -----------------------------*/
 
-
+// playAgainButton.addEventListener('click', init)
+// boardSlots.addEventListener('click')
 
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -45,5 +47,6 @@ init()
 
 function init() {
   winner = null
-  turn = null
+  currentPlayer = 1
+  board = []
 }
