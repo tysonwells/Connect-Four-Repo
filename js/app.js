@@ -32,15 +32,23 @@ let currentPlayer, winner, board
 
 /*------------------------ Cached Element References ------------------------*/
 
-const boardSlots = document.querySelectorAll(".grid")
+// change boardslot to gridslot for clarity.
+// change slots to slot because it make more sense.
+const gridSlot = document.querySelectorAll(".slot")
 const messageDisplay = document.querySelector("#message")
 const playAgainButton = document.querySelector("#id")
 
+
 /*----------------------------- Event Listeners -----------------------------*/
 
-// playAgainButton.addEventListener('click', init)
-// boardSlots.addEventListener('click')
+gridSlot.forEach(slot => slot.addEventListener('click', handleClick))
 
+
+
+
+
+// boardslot.addEventListener('click')
+  
 /*-------------------------------- Functions --------------------------------*/
 init()
 
@@ -48,5 +56,16 @@ init()
 function init() {
   winner = null
   currentPlayer = 1
-  board = []
+  board = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
 }
+
+function render() {
+  for (i = 0; i < board.length; i++) {
+    if(board[i] === 1) gridSlot[i].innerText = 1
+    if(board[i] === -1) gridSlot[i].innerText = -1
+    if(board[i] === null) gridSlot[i].innerText = null
+  }
+}
+
+
+
