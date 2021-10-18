@@ -1,6 +1,6 @@
 /*-------------------------------- Constants --------------------------------*/
 
-const winningArray = [ 
+const winningCombos = [ 
   [0, 1, 2, 3], [41, 40, 39, 38],[7, 8, 9, 10], 
   [34, 33, 32, 31], [14, 15, 16, 17], [27, 26, 25, 24], 
   [21, 22, 23, 24], [20, 19, 18, 17], [28, 29, 30, 31], 
@@ -36,15 +36,13 @@ let currentPlayer, winner, board
 // change slots to slot because it make more sense.
 const gridSlot = document.querySelectorAll(".slot")
 const messageDisplay = document.querySelector("#message")
-const playAgainButton = document.querySelector("#id")
+const playAgainButton = document.querySelector("#btn")
 
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 gridSlot.forEach(slot => slot.addEventListener('click', handleClick))
-
-
-
+playAgainButton.addEventListener('click', handleClick)
 
 
 // boardslot.addEventListener('click')
@@ -56,16 +54,97 @@ init()
 function init() {
   winner = null
   currentPlayer = 1
-  board = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null,]
+  board = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+  render()
 }
 
 function render() {
   for (i = 0; i < board.length; i++) {
-    if(board[i] === 1) gridSlot[i].innerText = 1
-    if(board[i] === -1) gridSlot[i].innerText = -1
-    if(board[i] === null) gridSlot[i].innerText = null
+    if(board[i] === 1) gridSlot[i].style.backgroundColor = 'red'
+    if(board[i] === -1) gridSlot[i].style.backgroundColor = 'blue'
+  }
+checkWin()
+renderMessage()
+}
+
+function renderMessage(){
+  if (winner === 'T') {
+  messageDisplay.innerText = "The game is tied"
+  } else if (winner !== null) {
+  messageDisplay.innerText = `${currentPlayer === 1 ? 'blue' : 'red'} won the game`
+  } else {
+    messageDisplay.innerText = `Current Turn: ${currentPlayer === 1 ? 'red' : 'blue'}`
   }
 }
 
 
+//Cleaned up handle click example:
 
+function handleClick(event) {
+  playAgainButton.removeAttribute("hidden")
+  const i = parseInt(event.target.id)
+  if (board[i] === null && !winner) {
+    board[i] = currentPlayer
+    currentPlayer *= -1
+    render()
+    //renderMessage()
+    
+  }
+}
+
+//Revised check for win
+function checkWin() {
+    winningCombos.forEach((combo) => {
+        if (Math.abs(board[combo[0]] + board[combo[1]] + board[combo[2]] + board[combo[3]]) === 4) winner = true
+    })
+}
+
+// function handleClick(event) {
+//   playAgainButton.removeAttribute('hidden', true)
+//   const i = parseInt(event.target.id)
+//   if (board[i] !== null) {
+//     return
+//   } else if (winner !==null) {
+//     return    
+//   } else { board[i] = currentPlayer}    
+  
+//   currentPlayer *= -1
+//   render()
+// }
+
+// function checkWin() {
+//   winningCombos.forEach((combo)=>{
+//     if (Math.abs(board[combo[0]] +  board[combo[1]] + board[combo[2]] + board[combo[0]]) === 4) winner = true
+//   })
+// }
+
+
+
+// function render() {
+//   for (let i = 0; 1 < board.length; i++) {
+
+//   // if(board[i] === 1) gameSlot[i].innerText = 'X'
+//   // if (board[i] === -1) gameSlot[i].innerText = 'O' 
+//   // if (board[i] === null) gameSlot[i].innerText = ''
+//   // }
+//   // getWinner()
+//   // renderMessage()
+//   }
+// }
+
+
+// function handleClick(event) {
+//   const i = parseInt(event.target.id.slice(2))
+  
+//   if(board[i + 7] !== null) {
+//     return 
+//   } else if (winner !== null) {
+//     return
+//   } else if (board[i + 7] === null) {
+//     board[i + 7] === currentPlayer
+//   }
+//   render()
+// }
+
+  
+    
