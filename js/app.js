@@ -28,7 +28,7 @@ const winningCombos = [
 
 /*-------------------------------- Variables --------------------------------*/
 
-let currentPlayer, winner, board
+let currentPlayer, winner, board, boardColumn
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -43,16 +43,13 @@ const playAgainButton = document.querySelector("#btn")
 
 gridSlot.forEach(slot => slot.addEventListener('click', handleClick))
 playAgainButton.addEventListener('click', handleClick)
-
-
-// boardslot.addEventListener('click')
   
 /*-------------------------------- Functions --------------------------------*/
 init()
 
-
 function init() {
   winner = null
+  boardColumn = []
   currentPlayer = 1
   board = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
   render()
@@ -65,6 +62,13 @@ function render() {
   }
 checkWin()
 renderMessage()
+}
+
+function column() {
+  for (let i = 0; i < gridSlot.length; i++) {
+    
+  }
+  
 }
 
 function renderMessage(){
@@ -83,6 +87,7 @@ function renderMessage(){
 function handleClick(event) {
   playAgainButton.removeAttribute("hidden")
   const i = parseInt(event.target.id)
+  console.log(parseInt(event.target.id))
   if (board[i] === null && !winner) {
     board[i] = currentPlayer
     currentPlayer *= -1
@@ -99,52 +104,3 @@ function checkWin() {
     })
 }
 
-// function handleClick(event) {
-//   playAgainButton.removeAttribute('hidden', true)
-//   const i = parseInt(event.target.id)
-//   if (board[i] !== null) {
-//     return
-//   } else if (winner !==null) {
-//     return    
-//   } else { board[i] = currentPlayer}    
-  
-//   currentPlayer *= -1
-//   render()
-// }
-
-// function checkWin() {
-//   winningCombos.forEach((combo)=>{
-//     if (Math.abs(board[combo[0]] +  board[combo[1]] + board[combo[2]] + board[combo[0]]) === 4) winner = true
-//   })
-// }
-
-
-
-// function render() {
-//   for (let i = 0; 1 < board.length; i++) {
-
-//   // if(board[i] === 1) gameSlot[i].innerText = 'X'
-//   // if (board[i] === -1) gameSlot[i].innerText = 'O' 
-//   // if (board[i] === null) gameSlot[i].innerText = ''
-//   // }
-//   // getWinner()
-//   // renderMessage()
-//   }
-// }
-
-
-// function handleClick(event) {
-//   const i = parseInt(event.target.id.slice(2))
-  
-//   if(board[i + 7] !== null) {
-//     return 
-//   } else if (winner !== null) {
-//     return
-//   } else if (board[i + 7] === null) {
-//     board[i + 7] === currentPlayer
-//   }
-//   render()
-// }
-
-  
-    
