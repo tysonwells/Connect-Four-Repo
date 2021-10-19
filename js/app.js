@@ -32,8 +32,7 @@ let currentPlayer, winner, board, boardColumn
 
 /*------------------------ Cached Element References ------------------------*/
 
-// change boardslot to gridslot for clarity.
-// change slots to slot because it make more sense.
+
 const gridSlot = document.querySelectorAll(".slot")
 const messageDisplay = document.querySelector("#message")
 const playAgainButton = document.querySelector("#btn")
@@ -52,52 +51,12 @@ init()
 function init() {
   playAgainButton.setAttribute('hidden', true)     
   winner = null
-  boardColumn = [[], [], [], [], [], [], []]  //populated with with empty columns.  starting at line 67.
   currentPlayer = 1
   board = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
 
-  assignColumns()
+
   render()
 }
-
-//! Build remaining columns
-function assignColumns() {
-  board.forEach(function (brd, idx) {
-    if (idx % 7 === 0) {
-      boardColumn[0].push(idx)
-      
-    } else if (idx % 7 === 1) {
-      boardColumn[1].push(idx)
-      console.log(idx)
-
-
-    } else if (idx % 7 === 2) {
-      boardColumn[2].push(idx)
-
-    } else if (idx % 7 === 3) {
-      boardColumn[3].push(idx)
-
-    } else if (idx % 7 === 4) {
-      boardColumn[4].push(idx)
-
-    }else if (idx % 7 === 5) {
-      boardColumn[5].push(idx)
-
-    } else if (idx % 7 === 6) {
-      boardColumn[6].push(idx)
-
-    }
-    
-  })
-
-  //! For testing that the columns were created correctly.
-  boardColumn[6].forEach(function(brd) {
-    board[brd] = 1 //all indexes for first column.  Test by checking each board column
-    console.log(board[brd])
-  })
-}
-console.log(boardColumn[0])
-
 
 function render() {
   for (i = 0; i < board.length; i++) {
@@ -108,9 +67,6 @@ function render() {
 checkWin()
 renderMessage()
 }
-
-
-
 
 function renderMessage(){
   if (winner === 'T') {
@@ -123,21 +79,23 @@ function renderMessage(){
 }
 
 
-//Cleaned up handle click example:
-
 function handleClick(event) {
-  playAgainButton.removeAttribute("hidden")
   const i = parseInt(event.target.id)
-
-  if (board[i] === null && !winner) {
-    board[i] = currentPlayer
-    currentPlayer *= -1
-    render()
-    //renderMessage()
+  
+  if(winner !== null || board[i] !== null) {
+    return
+  } else if (board[1] === null) { 
+    let adding = 35
+    while (board[i + adding] !== null) {
+      adding -= 7 
+    }
+    board[i + adding] = currentPlayer
     
-  }
+  } 
+  currentPlayer *= -1
+  playAgainButton.removeAttribute("hidden")
+  render()
 }
-
 //Revised check for win
 function checkWin() {
     winningCombos.forEach((combo) => {
