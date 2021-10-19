@@ -49,12 +49,12 @@ playAgainButton.addEventListener('click', init)
 init()
 
 function init() {
-  playAgainButton.setAttribute('hidden', true)     
+  //playAgainButton.setAttribute('hidden', true)     
   winner = null
   currentPlayer = 1
   board = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
-
-
+console.log('init')
+  
   render()
 }
 
@@ -62,10 +62,11 @@ function render() {
   for (i = 0; i < board.length; i++) {
     if(board[i] === 1) gridSlot[i].style.backgroundColor = 'red'
     if(board[i] === -1) gridSlot[i].style.backgroundColor = 'blue'
-
+    if(board[i] === null) gridSlot[i].style.backgroundColor = null
   }
 checkWin()
 renderMessage()
+console.log('render')
 }
 
 function renderMessage(){
@@ -76,25 +77,28 @@ function renderMessage(){
   } else {
     messageDisplay.innerText = `Current Turn: ${currentPlayer === 1 ? 'red' : 'blue'}`
   }
+
 }
 
 
 function handleClick(event) {
+  console.log('handleClick')
   const i = parseInt(event.target.id)
-  
-  if(winner !== null || board[i] !== null) {
-    return
-  } else if (board[1] === null) { 
-    let adding = 35
-    while (board[i + adding] !== null) {
-      adding -= 7 
-    }
-    board[i + adding] = currentPlayer
-    
+  if (board[i] === null && !winner) {
+  //if(winner !== null || board[i] !== null) {
+    //return
+    if (board[1] === null) { 
+     let adding = 35
+     while (board[i + adding] !== null) {
+       adding -= 7 
+     }
+     board[i + adding] = currentPlayer
+     
+   } 
+   currentPlayer *= -1
+   // playAgainButton.handleCl
+   render()
   } 
-  currentPlayer *= -1
-  playAgainButton.removeAttribute("hidden")
-  render()
 }
 //Revised check for win
 function checkWin() {
