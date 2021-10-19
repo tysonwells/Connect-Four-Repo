@@ -60,19 +60,38 @@ function init() {
   render()
 }
 
-
+//! Build remaining columns
 function assignColumns() {
   board.forEach(function (brd, idx) {
     if (idx % 7 === 0) {
       boardColumn[0].push(idx)
+      
+    } else if (idx % 7 === 1) {
+      boardColumn[1].push(idx)
       console.log(idx)
-    } else if (idx % 1) {
-      boardColumn[1].push(brd)
-    } else if (idx % 2) {
-      boardColumn[2].push(brd)
-    }    
+
+
+    } else if (idx % 7 === 2) {
+      boardColumn[2].push(idx)
+
+    } else if (idx % 7 === 3) {
+      boardColumn[3].push(idx)
+
+    } else if (idx % 7 === 4) {
+      boardColumn[4].push(idx)
+
+    }else if (idx % 7 === 5) {
+      boardColumn[5].push(idx)
+
+    } else if (idx % 7 === 6) {
+      boardColumn[6].push(idx)
+
+    }
+    
   })
-  boardColumn[0].forEach(function(brd) {
+
+  //! For testing that the columns were created correctly.
+  boardColumn[6].forEach(function(brd) {
     board[brd] = 1 //all indexes for first column.  Test by checking each board column
     console.log(board[brd])
   })
