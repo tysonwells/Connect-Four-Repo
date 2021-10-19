@@ -52,31 +52,33 @@ init()
 function init() {
   playAgainButton.setAttribute('hidden', true)     
   winner = null
-  boardColumn = [[], [], [], [], [], [], []]
+  boardColumn = [[], [], [], [], [], [], []]  //populated with with empty columns.  starting at line 67.
   currentPlayer = 1
   board = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+
+  assignColumns()
   render()
 }
 
-//
-// board.forEach(function(brd, idx) {
-//   if (idx % 7) {
-//     boardColumn[0].push(brd)
-//   } else { idx % 1
 
-//   }
-// }
+function assignColumns() {
+  board.forEach(function (brd, idx) {
+    if (idx % 7 === 0) {
+      boardColumn[0].push(idx)
+      console.log(idx)
+    } else if (idx % 1) {
+      boardColumn[1].push(brd)
+    } else if (idx % 2) {
+      boardColumn[2].push(brd)
+    }    
+  })
+  boardColumn[0].forEach(function(brd) {
+    board[brd] = 1 //all indexes for first column.  Test by checking each board column
+    console.log(board[brd])
+  })
+}
+console.log(boardColumn[0])
 
-board.forEach(function (brd, idx) {
-  if (idx % 7) {
-    boardColumn[0].push(brd)
-  } else if (idx % 1) {
-    boardColumn[1].push(brd)
-  } else if (idx % 2) {
-    boardColumn[2].push(brd)
-  }
-  console.log(boardColumn[1])
-})
 
 function render() {
   for (i = 0; i < board.length; i++) {
