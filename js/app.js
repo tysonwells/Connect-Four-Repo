@@ -39,15 +39,18 @@ const messageDisplay = document.querySelector("#message")
 const playAgainButton = document.querySelector("#btn")
 
 
+
+
 /*----------------------------- Event Listeners -----------------------------*/
 
 gridSlot.forEach(slot => slot.addEventListener('click', handleClick))
-playAgainButton.addEventListener('click', handleClick)
+playAgainButton.addEventListener('click', init)
   
 /*-------------------------------- Functions --------------------------------*/
 init()
 
 function init() {
+  playAgainButton.setAttribute('hidden', true)     
   winner = null
   boardColumn = []
   currentPlayer = 1
@@ -55,21 +58,22 @@ function init() {
   render()
 }
 
+board.forEach(function(color, idx) {
+  `${idx + 1} - ${color}`
+});
+
 function render() {
   for (i = 0; i < board.length; i++) {
     if(board[i] === 1) gridSlot[i].style.backgroundColor = 'red'
     if(board[i] === -1) gridSlot[i].style.backgroundColor = 'blue'
+
   }
 checkWin()
 renderMessage()
 }
 
-function column() {
-  for (let i = 0; i < gridSlot.length; i++) {
-    
-  }
-  
-}
+
+
 
 function renderMessage(){
   if (winner === 'T') {
@@ -87,7 +91,7 @@ function renderMessage(){
 function handleClick(event) {
   playAgainButton.removeAttribute("hidden")
   const i = parseInt(event.target.id)
-  console.log(parseInt(event.target.id))
+
   if (board[i] === null && !winner) {
     board[i] = currentPlayer
     currentPlayer *= -1
