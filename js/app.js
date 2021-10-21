@@ -39,9 +39,9 @@ const gridSlot = document.querySelectorAll(".slot")
 const messageDisplay = document.querySelector("#message")
 const playAgainButton = document.querySelector("#btn")
 const themeSwitcher = document.querySelector('.btn')
-//const darkModeSwitch = document.getElementById ('theme-switcher')
-// const lightTheme = document.getAttribute('light-theme')
-// const darkTheme = document.getAttribute('data-theme', 'dark')
+const lightDarkBtn = document.querySelector('#light-dark-button')
+const body = document.querySelector('body')
+
 
 /*----------------------------- Event Listeners -----------------------------*/
 
