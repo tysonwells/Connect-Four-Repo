@@ -38,17 +38,17 @@ let currentPlayer, winner, board
 const gridSlot = document.querySelectorAll(".slot")
 const messageDisplay = document.querySelector("#message")
 const playAgainButton = document.querySelector("#btn")
-const darkModeSwitch = document.getElementById ('theme-switcher')
-const currentTheme = document.documentElement.getAttribute("light-theme");
+const themeSwitcher = document.querySelector('.btn')
+//const darkModeSwitch = document.getElementById ('theme-switcher')
+// const lightTheme = document.getAttribute('light-theme')
+// const darkTheme = document.getAttribute('data-theme', 'dark')
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 gridSlot.forEach(slot => slot.addEventListener('click', handleClick))
 
 playAgainButton.addEventListener('click', init)
-
-document.documentElement.setAttribute("data-theme", "dark");
-
+themeSwitcher.addEventListener('click', init)
   
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -107,13 +107,13 @@ function checkWin() {
     })
 }
 
-themeSwitcher.onclick = function() {
+// themeSwitcher.onclick = function() {
   // Get the current selected theme, on the first run
   // it should be `light`
-  let currentTheme = document.documentElement.getAttribute("data-theme");
+  // let currentTheme = document.documentElement.getAttribute("data-theme");
 
   // Switch between `dark` and `light`
-  let = switchToTheme = currentTheme === "dark" ? "light" : "dark"
+  // let = switchToTheme = currentTheme === "dark" ? "light" : "dark"
 
   // Set our currenet theme to the new one
-  document.documentElement.setAttribute("data-theme", switchToTheme);
+  //document.documentElement.setAttribute("data-theme", switchToTheme)
