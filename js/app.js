@@ -31,25 +31,20 @@ const winningCombos = [
 // Variables used to track the game state.
 let currentPlayer, winner, board
 
-/*------------------------ Cached Element References ------------------------*/
-
-//    
+/*------------------------ Cached Element References ------------------------*/    
 
 const gridSlot = document.querySelectorAll(".slot")
 const messageDisplay = document.querySelector("#message")
 const playAgainButton = document.querySelector("#btn")
-const lightDarkBtn = document.querySelector('#light-dark-button')
-const body = document.querySelector('body')
-
+const colorSwitch = document.getElementById('input-color-switch')
 
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 gridSlot.forEach(slot => slot.addEventListener('click', handleClick))
-
 playAgainButton.addEventListener('click', init)
-lightDarkBtn.addEventListener("click", toggleLightDark)
-  
+colorSwitch.addEventListener('click', checkMode)
+
 /*-------------------------------- Functions --------------------------------*/
 init()
 
@@ -58,11 +53,6 @@ function init() {
   currentPlayer = 1
   board = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
   render()
-  toggleLightDark()
-}
-
-function toggleLightDark() {
-  body.className = body.className === "dark" ? "" : "dark"
 }
 
 function render() {
@@ -71,6 +61,7 @@ function render() {
     if(board[i] === -1) gridSlot[i].style.backgroundColor = 'blue'
     if(board[i] === null) gridSlot[i].style.backgroundColor = null
   }
+  // console.log('render')
 checkWin()
 renderMessage()
 }
@@ -83,9 +74,7 @@ function renderMessage(){
   } else {
     messageDisplay.innerText = `Current Turn: ${currentPlayer === 1 ? 'red' : 'blue'}`
   }
-
 }
-
 
 function handleClick(event) {
   console.log('handleClick') //! Test function
@@ -100,7 +89,7 @@ function handleClick(event) {
     } 
    currentPlayer *= -1
   render()
-  } 
+  }
 }
 
 function checkWin() {
@@ -109,13 +98,21 @@ function checkWin() {
     })
 }
 
-// themeSwitcher.onclick = function() {
-  // Get the current selected theme, on the first run
-  // it should be `light`
-  // let currentTheme = document.documentElement.getAttribute("data-theme");
+function checkMode() {
+  console.log("checking...")
+  if(colorSwitch.checked){
+    console.log('dark on')
+    darkModeOn()
+  } else {
+    console.log('dark off')
+    darkModeOff()
+  }  
+}
 
-  // Switch between `dark` and `light`
-  // let = switchToTheme = currentTheme === "dark" ? "light" : "dark"
+function darkModeOn() {
+  document.body.classList.add('dark-mode')
+}
 
-  // Set our currenet theme to the new one
-  //document.documentElement.setAttribute("data-theme", switchToTheme)
+function darkModeOff() {
+  document.body.classList.remove('dark-mode')
+}
