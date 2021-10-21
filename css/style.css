@@ -68,3 +68,9 @@ body {
   background-color: white;
   outline: 5px black;
 }
+
+@media only screen and (min-width: 768px) {
+  body {
+  margin: 0;
+  }
+}

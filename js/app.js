@@ -38,7 +38,6 @@ let currentPlayer, winner, board
 const gridSlot = document.querySelectorAll(".slot")
 const messageDisplay = document.querySelector("#message")
 const playAgainButton = document.querySelector("#btn")
-const themeSwitcher = document.querySelector('.btn')
 const lightDarkBtn = document.querySelector('#light-dark-button')
 const body = document.querySelector('body')
 
@@ -49,18 +48,17 @@ const body = document.querySelector('body')
 gridSlot.forEach(slot => slot.addEventListener('click', handleClick))
 
 playAgainButton.addEventListener('click', init)
-themeSwitcher.addEventListener('click', init)
+lightDarkBtn.addEventListener("click", toggleLightDark)
   
 /*-------------------------------- Functions --------------------------------*/
 init()
 
-function init() {
-  //playAgainButton.setAttribute('hidden', true)     
+function init() {    
   winner = null
   currentPlayer = 1
   board = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
-  
   render()
+  toggleLightDark()
 }
 
 function toggleLightDark() {
@@ -101,7 +99,6 @@ function handleClick(event) {
     board[i + adding] = currentPlayer
     } 
    currentPlayer *= -1
-   console.log(handleClick)
   render()
   } 
 }
