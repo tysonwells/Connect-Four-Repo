@@ -1,5 +1,5 @@
 /*-------------------------------- Constants --------------------------------*/
-
+// Set array of winning combinations to variable winning
 const winningCombos = [ 
   [0, 1, 2, 3], [41, 40, 39, 38],[7, 8, 9, 10], 
   [34, 33, 32, 31], [14, 15, 16, 17], [27, 26, 25, 24], 
@@ -28,22 +28,27 @@ const winningCombos = [
 
 /*-------------------------------- Variables --------------------------------*/
 
-let currentPlayer, winner, board, boardColumn
+// Variables used to track the game state.
+let currentPlayer, winner, board
 
 /*------------------------ Cached Element References ------------------------*/
 
+//    
 
 const gridSlot = document.querySelectorAll(".slot")
 const messageDisplay = document.querySelector("#message")
 const playAgainButton = document.querySelector("#btn")
-
-
-
+const darkModeSwitch = document.getElementById ('theme-switcher')
+const currentTheme = document.documentElement.getAttribute("light-theme");
 
 /*----------------------------- Event Listeners -----------------------------*/
 
 gridSlot.forEach(slot => slot.addEventListener('click', handleClick))
+
 playAgainButton.addEventListener('click', init)
+
+document.documentElement.setAttribute("data-theme", "dark");
+
   
 /*-------------------------------- Functions --------------------------------*/
 init()
@@ -53,7 +58,6 @@ function init() {
   winner = null
   currentPlayer = 1
   board = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
-console.log('init')
   
   render()
 }
@@ -66,14 +70,13 @@ function render() {
   }
 checkWin()
 renderMessage()
-console.log('render')
 }
 
 function renderMessage(){
   if (winner === 'T') {
-  messageDisplay.innerText = "The game is tied"
+    messageDisplay.innerText = "The game is tied"
   } else if (winner !== null) {
-  messageDisplay.innerText = `${currentPlayer === 1 ? 'blue' : 'red'} won the game`
+    messageDisplay.innerText = `${currentPlayer === 1 ? 'blue' : 'red'} won the game`
   } else {
     messageDisplay.innerText = `Current Turn: ${currentPlayer === 1 ? 'red' : 'blue'}`
   }
@@ -82,28 +85,35 @@ function renderMessage(){
 
 
 function handleClick(event) {
-  console.log('handleClick')
+  console.log('handleClick') //! Test function
   const i = parseInt(event.target.id)
   if (board[i] === null && !winner) {
-  //if(winner !== null || board[i] !== null) {
-    //return
     if (board[1] === null) { 
-     let adding = 35
-     while (board[i + adding] !== null) {
-       adding -= 7 
-     }
-     board[i + adding] = currentPlayer
-     
-   } 
+    let adding = 35
+    while (board[i + adding] !== null) {
+    adding -= 7 
+    }
+    board[i + adding] = currentPlayer
+    } 
    currentPlayer *= -1
-   // playAgainButton.handleCl
-   render()
+   console.log(handleClick)
+  render()
   } 
 }
-//Revised check for win
+
 function checkWin() {
     winningCombos.forEach((combo) => {
         if (Math.abs(board[combo[0]] + board[combo[1]] + board[combo[2]] + board[combo[3]]) === 4) winner = true
     })
 }
 
+themeSwitcher.onclick = function() {
+  // Get the current selected theme, on the first run
+  // it should be `light`
+  let currentTheme = document.documentElement.getAttribute("data-theme");
+
+  // Switch between `dark` and `light`
+  let = switchToTheme = currentTheme === "dark" ? "light" : "dark"
+
+  // Set our currenet theme to the new one
+  document.documentElement.setAttribute("data-theme", switchToTheme);
