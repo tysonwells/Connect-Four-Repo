@@ -43,6 +43,7 @@ const lightDarkBtn = document.querySelector('#light-dark-button')
 const body = document.querySelector('body')
 
 
+
 /*----------------------------- Event Listeners -----------------------------*/
 
 gridSlot.forEach(slot => slot.addEventListener('click', handleClick))
@@ -60,6 +61,10 @@ function init() {
   board = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
   
   render()
+}
+
+function toggleLightDark() {
+  body.className = body.className === "dark" ? "" : "dark"
 }
 
 function render() {
