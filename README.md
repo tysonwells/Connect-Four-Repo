@@ -1,4 +1,4 @@
-# ConnectFour
+# Vertical Checkers
 <image goes here>
 
 Description:
@@ -7,7 +7,9 @@ Description:
   
 Objective:
   -Connect four of your checkers in a rwo while preventing your opponent from doing the same.
-
+  
+Get Started:
+  vertical-checkers.netlify.app
   
 Technologies Used:
   - JavaScript
