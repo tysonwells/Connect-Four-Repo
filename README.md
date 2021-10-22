@@ -1,20 +1,24 @@
-# ConnectFour
+# Vertical Checkers
 <image goes here>
 
 Description:
+  - Vintage Connect Four is a browser-based game that simulates the Connect Four that Milton Bradley in February of 1974 released.
 
-- Vintage Connect Four is a browser-based game that simulates the Connect Four that Milton Bradley in February of 1974 released.
-
-Getting Started: 
-
-- "Link to the game here"
-- Instructions here
-
+  
+Objective:
+  -Connect four of your checkers in a rwo while preventing your opponent from doing the same.
+  
+Get Started:
+  vertical-checkers.netlify.app
+  
 Technologies Used:
   - JavaScript
   - HTML
   - CSS
   
 Future Enhancements:
+  - Improve CSS to make the game look and feel like the original game.
+  - Add animation so the chips fall into place
+  
   
 
