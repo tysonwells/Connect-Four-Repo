@@ -6,7 +6,7 @@ Description:
 
   
 Objective:
-  -Connect four of your checkers in a rwo while preventing your opponent from doing the same.
+  - Connect four of your checkers in a rwo while preventing your opponent from doing the same.
   
 Get Started:
   https://vertical-checkers.netlify.app
