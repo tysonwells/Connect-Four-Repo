@@ -19,6 +19,8 @@ Technologies Used:
 Future Enhancements:
   - Improve CSS to make the game look and feel like the original game.
   - Add animation so the chips fall into place
+  - Add some animation
+  
   
   
 
