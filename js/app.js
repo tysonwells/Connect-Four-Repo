@@ -49,7 +49,6 @@ colorSwitch.addEventListener('click', checkMode)
 init()
 
 function init() {  
-  playAgainButton.setAttribute('hidden', true)
   winner = null
   currentPlayer = 1
   board = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
@@ -58,22 +57,19 @@ function init() {
 
 function render() {
   for (i = 0; i < board.length; i++) {
-    if(board[i] === 1) gridSlot[i].style.backgroundColor = 'red'
-    if(board[i] === -1) gridSlot[i].style.backgroundColor = 'yellow'
+    if(board[i] === 1) gridSlot[i].style.backgroundColor = 'Red'
+    if(board[i] === -1) gridSlot[i].style.backgroundColor = 'Yellow'
     if(board[i] === null) gridSlot[i].style.backgroundColor = null
-  }
-  if(winner === true) {
-    playAgainButton.removeAttribute('hidden')
-  }
+  }  
 checkWin()
 renderMessage()
 }
 
 function renderMessage(){
   if (winner !== null) {
-    messageDisplay.innerText = `${currentPlayer === 1 ? 'yellow' : 'red'} won the game`
+    messageDisplay.innerText = `${currentPlayer === 1 ? 'Yellow' : 'Red'} won the game`
   } else {
-    messageDisplay.innerText = `Current Turn: ${currentPlayer === 1 ? 'red' : 'yellow'}`
+    messageDisplay.innerText = `Current Turn: ${currentPlayer === 1 ? 'Red' : 'Yellow'}`
   }  
 }  
 
