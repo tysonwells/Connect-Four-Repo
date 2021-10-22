@@ -48,7 +48,8 @@ colorSwitch.addEventListener('click', checkMode)
 /*-------------------------------- Functions --------------------------------*/
 init()
 
-function init() {    
+function init() {  
+  playAgainButton.setAttribute('hidden', true)
   winner = null
   currentPlayer = 1
   board = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
@@ -61,58 +62,59 @@ function render() {
     if(board[i] === -1) gridSlot[i].style.backgroundColor = 'yellow'
     if(board[i] === null) gridSlot[i].style.backgroundColor = null
   }
-  // console.log('render')
+  if(winner === true) {
+    playAgainButton.removeAttribute('hidden')
+  }
 checkWin()
 renderMessage()
 }
 
 function renderMessage(){
-  if (winner === 'T') {
-    messageDisplay.innerText = "The game is tied"
-  } else if (winner !== null) {
+  if (winner !== null) {
     messageDisplay.innerText = `${currentPlayer === 1 ? 'yellow' : 'red'} won the game`
   } else {
     messageDisplay.innerText = `Current Turn: ${currentPlayer === 1 ? 'red' : 'yellow'}`
-  }
-}
+  }  
+}  
 
 function handleClick(event) {
-  console.log('handleClick') //! Test function
   const i = parseInt(event.target.id)
   if (board[i] === null && !winner) {
     if (board[1] === null) { 
-    let adding = 35
+    let adding = 35  
     while (board[i + adding] !== null) {
-    adding -= 7 
+    adding -= 7   
     }
     board[i + adding] = currentPlayer
     } 
-   currentPlayer *= -1
-  render()
+   currentPlayer *= -1 
+  render() 
   }
-}
+}  
 
 function checkWin() {
     winningCombos.forEach((combo) => {
         if (Math.abs(board[combo[0]] + board[combo[1]] + board[combo[2]] + board[combo[3]]) === 4) winner = true
-    })
-}
+    })    
+}    
 
 function checkMode() {
-  console.log("checking...")
   if(colorSwitch.checked){
-    console.log('dark on')
     darkModeOn()
   } else {
-    console.log('dark off')
     darkModeOff()
-  }  
-}
+  }    
+}  
 
 function darkModeOn() {
   document.body.classList.add('dark-mode')
-}
+}  
 
 function darkModeOff() {
   document.body.classList.remove('dark-mode')
-}
+}  
+
+
+
+
+
