@@ -4,11 +4,7 @@ html {
   box-sizing: border-box
 }
 
-:root {
-  --clr-background: #eceff1;
-  --clr-base: #ffff
-  --clr-gray: #263238
-}
+
 
 /* The Universal Selector */
 *, /* All elements*/
@@ -19,70 +15,87 @@ html {
   box-sizing: inherit;
 }
 
+:root {
+  font-size: 62.8%;
+  --cursive: 'Angkor', cursive;  
+  --clr-grid: #2176FF;
+  --clr-background: #eceff1;
+  
+}   
 
 body {
+  background-color: var(--clr-background);
   font-family: sans-serif;
   margin: 0;
   margin-top: 50px;
   text-align: center;
-  background-color: var(--clr-background);
 }
 
-.btn {
-  border: none;
-  font-weight: 400;
-  font-size: 1rem;
+section {
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 #title { 
-  font-size: 100px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+  font-family: var(--cursive);
   color: rgba(255, 55, 0, 0.982);
-  
 }
 
+#game-state {
+  font-family: var(--cursive);
+}
+
+
+
 #btn {
-  border: none;
+  border: solid black;
   font-weight: 400;
   font-size: 1.5rem;
-  margin: 1.2rem;
+  margin-bottom: 1em;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(7, 110px);
-  grid-template-rows: repeat(6, 110px);
-  width: 770px;
-  height: 660px;
+  grid-template-columns: repeat(7, 80px);
+  grid-template-rows: repeat(6, 80px);
+  width: 590px;
+  height: 500px;
   margin: 0 auto;
   justify-content: center;
-  background-color: black;
+  background-color: var(--clr-grid);
+  border-radius: 20px;
 }
 
 .slot {
-  border: 5px solid black;
+  border: 5px solid var(--clr-grid);;
   border-radius: 50%;
-  background-color: white;
+  background-color: var(--body-bg);
+  align-items: center;
+  justify-content: center;
+  background-color: var(--clr-background)
 }
 
-.dark-mode {
-  --clr-background: #263238;
-  --clr-base: black;
-  --clr-primary: #69f0ac;
-  --clr-gray: #e0f7fa;
+.dark-mode {  
+    --clr-background: #263238;
+    --clr-base: black;
+    --clr-primary: #69f0ae;
+    --clr-gray: #e0f7fa;  
 }
 
 .wrapper-color-switch {
   display:flex;
   justify-content:flex-end;
   align-items:center;
+  margin-right: 1em;
 }
 
 .color-switch {
   width:4em;
   height:2em;
   border-radius: 10em;
-  background: gray;
+  background-color: var(--clr-background);
   border: 2px solid black;
   position: absolute;
   cursor: pointer;
@@ -94,7 +107,7 @@ body {
   background: black;
   position: absolute;
   border-radius: 10em;
-  top:0.2em;
+  top:0em;
   left:0.2em;
   transition: all 250ms ease-in-out;
 }

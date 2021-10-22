@@ -34,8 +34,8 @@ let currentPlayer, winner, board
 /*------------------------ Cached Element References ------------------------*/    
 
 const gridSlot = document.querySelectorAll(".slot")
-const messageDisplay = document.querySelector("#message")
-const playAgainButton = document.querySelector("#btn")
+const messageDisplay = document.querySelector("#game-state")
+const playAgainButton = document.querySelector("#replay")
 const colorSwitch = document.getElementById('input-color-switch')
 
 
@@ -58,7 +58,7 @@ function init() {
 function render() {
   for (i = 0; i < board.length; i++) {
     if(board[i] === 1) gridSlot[i].style.backgroundColor = 'red'
-    if(board[i] === -1) gridSlot[i].style.backgroundColor = 'blue'
+    if(board[i] === -1) gridSlot[i].style.backgroundColor = 'yellow'
     if(board[i] === null) gridSlot[i].style.backgroundColor = null
   }
   // console.log('render')
@@ -70,9 +70,9 @@ function renderMessage(){
   if (winner === 'T') {
     messageDisplay.innerText = "The game is tied"
   } else if (winner !== null) {
-    messageDisplay.innerText = `${currentPlayer === 1 ? 'blue' : 'red'} won the game`
+    messageDisplay.innerText = `${currentPlayer === 1 ? 'yellow' : 'red'} won the game`
   } else {
-    messageDisplay.innerText = `Current Turn: ${currentPlayer === 1 ? 'red' : 'blue'}`
+    messageDisplay.innerText = `Current Turn: ${currentPlayer === 1 ? 'red' : 'yellow'}`
   }
 }
 
