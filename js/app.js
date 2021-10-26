@@ -51,7 +51,8 @@ init()
 function init() {  
   winner = null
   currentPlayer = 1
-  board = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+  board = new Array(42).fill(null)
+  playAgainButton.setAttribute('hidden', true)
   render()
 }
 
@@ -68,6 +69,7 @@ renderMessage()
 function renderMessage(){
   if (winner !== null) {
     messageDisplay.innerText = `${currentPlayer === 1 ? 'Yellow' : 'Red'} won the game`
+    playAgainButton.removeAttribute('hidden')
   } else {
     messageDisplay.innerText = `Current Turn: ${currentPlayer === 1 ? 'Red' : 'Yellow'}`
   }  
